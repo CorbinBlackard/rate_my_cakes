@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="root">
+    <h1>Rate my Cakes</h1>
+    <div class="submission">
+      <form (submit)="createCake()">
+        <p> {{ newCake | json }} </p>
+        <p>Baker's Name: <input type="text" name="newCake.name" [(ngModel)]="newCake.name"></p>
+        <p>Image url: <input type="text" name="newCake.image" [(ngModel)]="newCake.image"></p>
+        <input type="submit" value="Submit">
+      </form>
+      <hr>
+      <tr *ngFor="let x of cakes">
+        <td>{{x.name}}</td>
+        <td>
+          <img class="img" (click)='showCake(x._id)'src="{{x.image}}">
+        </td>
+        <td>
+          <form (submit)="createRating(show_cakes._id, newRating)">
+            <select name="newRating.rating" [(ngModel)]="newRating.rating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <input type="text" name="newRating.comment" [(ngModel)]="newRating.comment" value="Type your comment here">
+            <label>Rating</label>
+          </form>
+        </td>
+        <td>
+          <button (click)='deleteCake(x._id)'>Delete Cake</button>
+        </td>
+      </tr>
+    </div>
+    <hr>
+    <div>
+      <table  *ngIf='show_cakes'>
+          <tr><td><h2>Baked by: {{show_cakes.name}}</h2></td></tr>
+          <tr><td><img class="img" src="{{show_cakes.image}}"></td></tr>
+          <tr><td>{{show_cakes.ratings}}</td></tr>
+      </table>
+      <input type="submit" value="Submit">
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+<router-outlet></router-outlet>

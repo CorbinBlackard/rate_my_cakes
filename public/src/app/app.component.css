@@ -1,0 +1,21 @@
+.root{
+    border: 2px solid green;
+    width: 600px;
+    height: 600px;
+}
+.submission{
+    border: 2px solid blueviolet;
+    width: 70%;
+    text-align: center;
+    padding: 10px;
+}
+.display{
+    border: 2px solid orange;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+.img{
+    width: 100px;
+    height: 100px;
+}
